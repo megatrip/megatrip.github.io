@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MEGATRIP</title>
+		<style>
+			/*RESET*/
+				html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{border:0;font-size:100%;font:inherit;margin:0;padding:0;vertical-align:baseline;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}body{line-height:1;}ol,ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:"";content:none;}table{border-collapse:collapse;border-spacing:0;}*{box-sizing:border-box;}
+			/*STYLE*/
+			html, body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				width: 100%;
+			}
+			body {
+				align-items: center;
+				background-color: #000;
+				display: flex;
+				font-family: monospace;
+				font-size: 16px;
+				font-weight: normal;
+				justify-content: center;
+			}
+			p {
+				color: #fff;
+				font-size: 2em;
+			}
+		</style>
+	</head>
+	<body>
+		<p id="testo"></p>
+		<script>
+		    const testo = "Lasciatemi in pace!";
+		    const el = document.getElementById("testo");
+		    let i = 0;
+		    function scrivi() {
+		        if (i < testo.length) {
+		            el.textContent += testo.charAt(i++);
+		            setTimeout(scrivi, 100);
+		        } else {
+		            setTimeout(() => {
+		                let j = testo.length;
+		                function cancella() {
+		                    if (j > 0) {
+		                        el.textContent = testo.substring(0, --j);
+		                        setTimeout(cancella, 50);
+		                    } else {
+		                        i = 0;
+		                        setTimeout(scrivi, 1000);
+		                    }
+		                }
+		                cancella();
+		            }, 2000);
+		        }
+		    }
+		    scrivi();
+		</script>
+	</body>
+</html>
+
